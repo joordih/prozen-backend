@@ -1,0 +1,48 @@
+package dev.joordih.prozen;
+
+import com.google.inject.Guice;
+import com.google.inject.Injector;
+import dev.joordih.prozen.managers.ManagersModule;
+import dev.joordih.prozen.managers.database.MongoConfig;
+import dev.joordih.prozen.managers.database.MongoModule;
+import io.micronaut.runtime.Micronaut;
+
+/*
+ *
+ *  * Copyright © 2025 Jordi Xavier
+ *  *
+ *  * Class: Prozen
+ *  * Project: prozen-backend
+ *  * Module: prozen-backend
+ *  *
+ *  * Last modified: 2025-03-14 14:25:19
+ *  *
+ *  * All rights reserved. This source code is the property of Jordi Xavier
+ *  * and may not be copied, modified, or distributed without explicit permission.
+ *
+ */
+
+public class Prozen {
+    private final Injector injector;
+
+    public Prozen() {
+        MongoConfig mongoConfig = MongoConfig.builder()
+            .uri("mongodb://localhost:27017")
+            .database("prozen")
+            .build();
+
+        injector = Guice.createInjector(
+            new ProzenModule(),
+            new MongoModule(mongoConfig),
+            new ManagersModule()
+        );
+    }
+
+    public static void main(String[] args) {
+        Micronaut.run(Prozen.class, args);
+    }
+
+    public Injector getInjector() {
+        return injector;
+    }
+}

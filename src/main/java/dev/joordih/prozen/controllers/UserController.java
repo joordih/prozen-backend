@@ -5,7 +5,23 @@ import dev.joordih.prozen.managers.models.impl.user.User;
 import dev.joordih.prozen.services.UserService;
 import io.micronaut.http.HttpResponse;
 import io.micronaut.http.annotation.*;
+
 import java.util.List;
+
+/*
+ *
+ *  * Copyright © 2025 Jordi Xavier
+ *  *
+ *  * Class: UserController
+ *  * Project: prozen-backend
+ *  * Module: prozen-backend
+ *  *
+ *  * Last modified: 2025-03-14 14:34:22
+ *  *
+ *  * All rights reserved. This source code is the property of Jordi Xavier
+ *  * and may not be copied, modified, or distributed without explicit permission.
+ *
+ */
 
 @Controller("/api/users")
 public class UserController {

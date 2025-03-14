@@ -1,12 +1,28 @@
 package dev.joordih.prozen.controllers;
 
 import com.google.inject.Inject;
-import dev.joordih.prozen.managers.models.impl.Task;
+import dev.joordih.prozen.managers.models.impl.task.Task;
 import dev.joordih.prozen.services.TaskService;
 import io.micronaut.http.HttpResponse;
 import io.micronaut.http.annotation.*;
 import org.bson.types.ObjectId;
+
 import java.util.List;
+
+/*
+ *
+ *  * Copyright © 2025 Jordi Xavier
+ *  *
+ *  * Class: TaskController
+ *  * Project: prozen-backend
+ *  * Module: prozen-backend
+ *  *
+ *  * Last modified: 2025-03-14 14:34:22
+ *  *
+ *  * All rights reserved. This source code is the property of Jordi Xavier
+ *  * and may not be copied, modified, or distributed without explicit permission.
+ *
+ */
 
 @Controller("/api/tasks")
 public class TaskController {

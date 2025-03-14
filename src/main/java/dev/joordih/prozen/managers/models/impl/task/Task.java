@@ -1,4 +1,4 @@
-package dev.joordih.prozen.managers.models.impl;
+package dev.joordih.prozen.managers.models.impl.task;
 
 import dev.joordih.prozen.managers.models.Model;
 import lombok.AllArgsConstructor;
@@ -6,7 +6,23 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import org.bson.types.ObjectId;
+
 import java.time.LocalDateTime;
+
+/*
+ *
+ *  * Copyright 2025 Jordi Xavier
+ *  *
+ *  * Class: Task
+ *  * Project: prozen-backend
+ *  * Module: prozen-backend
+ *  *
+ *  * Last modified: 2025-03-14 14:40:40
+ *  *
+ *  * All rights reserved. This source code is the property of Jordi Xavier
+ *  * and may not be copied, modified, or distributed without explicit permission.
+ *
+ */
 
 @Data
 @Builder
@@ -75,5 +91,15 @@ public class Task implements Model {
         public String getDisplayName() {
             return displayName;
         }
+    }
+
+    @Override
+    public String getId() {
+        return id;
+    }
+
+    @Override
+    public void setId(String id) {
+        this.id = id;
     }
 }

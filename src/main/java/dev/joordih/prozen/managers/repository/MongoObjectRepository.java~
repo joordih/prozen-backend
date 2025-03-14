@@ -24,7 +24,6 @@ import lombok.Getter;
 @Getter
 public class MongoObjectRepository<T extends Model> implements ObjectRepository<T> {
 
-    @Getter
     protected final MongoCollection<T> collection;
 
     public MongoObjectRepository(MongoCollection<T> collection) {
@@ -48,5 +47,9 @@ public class MongoObjectRepository<T extends Model> implements ObjectRepository<
             model,
             new ReplaceOptions().upsert(true)
         );
+    }
+
+    protected MongoCollection<T> getCollection() {
+        return collection;
     }
 }

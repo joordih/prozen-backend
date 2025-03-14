@@ -1,15 +1,15 @@
 package dev.joordih.prozen.managers.database;
 
+import com.google.inject.AbstractModule;
+import com.google.inject.Provides;
+import com.google.inject.Singleton;
 import com.mongodb.client.MongoClient;
 import com.mongodb.client.MongoClients;
 import com.mongodb.client.MongoDatabase;
-import jakarta.inject.Singleton;
-import io.micronaut.context.annotation.Factory;
-import io.micronaut.context.annotation.Bean;
 
 /*
  *
- *  * Copyright 2025 Jordi Xavier
+ *  * Copyright © 2025 Jordi Xavier
  *  *
  *  * Class: MongoModule
  *  * Project: prozen-backend
@@ -22,29 +22,33 @@ import io.micronaut.context.annotation.Bean;
  *
  */
 
-@Factory
-public class MongoModule {
+public class MongoModule extends AbstractModule {
+
     private final MongoConfig config;
 
     public MongoModule(MongoConfig config) {
         this.config = config;
     }
 
-    @Bean
+    @Override
+    protected void configure() {
+    }
+
+    @Provides
     @Singleton
-    MongoClient mongoClient() {
+    MongoClient provideMongoClient() {
         return MongoClients.create(config.getUri());
     }
 
-    @Bean
+    @Provides
     @Singleton
-    MongoDatabase mongoDatabase(MongoClient client) {
+    MongoDatabase provideMongoDatabase(MongoClient client) {
         return client.getDatabase(config.getDatabase());
     }
 
-    @Bean
+    @Provides
     @Singleton
-    MongoConnector mongoConnector(MongoDatabase database) {
+    MongoConnector provideMongoConnector(MongoDatabase database) {
         return new MongoConnector(database);
     }
 }

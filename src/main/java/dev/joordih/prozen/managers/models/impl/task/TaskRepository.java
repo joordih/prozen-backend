@@ -1,18 +1,17 @@
-package dev.joordih.prozen.managers.repository;
+package dev.joordih.prozen.managers.models.impl.task;
 
-import com.google.inject.Inject;
-import com.google.inject.Singleton;
-import com.mongodb.client.model.Filters;
 import dev.joordih.prozen.managers.database.MongoConnector;
-import dev.joordih.prozen.managers.models.impl.Task;
+import dev.joordih.prozen.managers.repository.MongoObjectRepository;
+import jakarta.inject.Singleton;
+import com.mongodb.client.model.Filters;
 import org.bson.types.ObjectId;
+
 import java.util.ArrayList;
 import java.util.List;
 
 @Singleton
 public class TaskRepository extends MongoObjectRepository<Task> {
 
-    @Inject
     public TaskRepository(MongoConnector mongoConnector) {
         super(mongoConnector.getCollection("tasks", Task.class));
     }

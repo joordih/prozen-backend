@@ -1,13 +1,29 @@
 package dev.joordih.prozen.services.impl;
 
-import com.google.inject.Inject;
-import com.google.inject.Singleton;
-import dev.joordih.prozen.managers.models.impl.Task;
-import dev.joordih.prozen.managers.repository.TaskRepository;
+import dev.joordih.prozen.managers.models.impl.task.Task;
+import dev.joordih.prozen.managers.models.impl.task.TaskRepository;
 import dev.joordih.prozen.services.TaskService;
+import jakarta.inject.Inject;
+import jakarta.inject.Singleton;
 import org.bson.types.ObjectId;
+
 import java.time.LocalDateTime;
 import java.util.List;
+
+/*
+ *
+ *  * Copyright 2025 Jordi Xavier
+ *  *
+ *  * Class: TaskServiceImpl
+ *  * Project: prozen-backend
+ *  * Module: prozen-backend
+ *  *
+ *  * Last modified: 2025-03-14 14:34:22
+ *  *
+ *  * All rights reserved. This source code is the property of Jordi Xavier
+ *  * and may not be copied, modified, or distributed without explicit permission.
+ *
+ */
 
 @Singleton
 public class TaskServiceImpl implements TaskService {

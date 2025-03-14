@@ -1,19 +1,33 @@
 package dev.joordih.prozen;
 
-import com.google.inject.AbstractModule;
-import com.google.inject.Provides;
-import com.google.inject.Singleton;
-import io.micronaut.context.ApplicationContext;
+import io.micronaut.context.annotation.Factory;
+import io.micronaut.context.annotation.Bean;
+import dev.joordih.prozen.managers.database.MongoConfig;
+import jakarta.inject.Singleton;
 
-public class ProzenModule extends AbstractModule {
+/*
+ *
+ *  * Copyright 2025 Jordi Xavier
+ *  *
+ *  * Class: ProzenModule
+ *  * Project: prozen-backend
+ *  * Module: prozen-backend
+ *  *
+ *  * Last modified: 2025-03-14 14:25:01
+ *  *
+ *  * All rights reserved. This source code is the property of Jordi Xavier
+ *  * and may not be copied, modified, or distributed without explicit permission.
+ *
+ */
 
-    @Override
-    protected void configure() {
-    }
-
-    @Provides
+@Factory
+public class ProzenModule {
+    @Bean
     @Singleton
-    ApplicationContext provideApplicationContext() {
-        return ApplicationContext.run();
+    MongoConfig mongoConfig() {
+        return MongoConfig.builder()
+            .uri("mongodb://localhost:27017")
+            .database("prozen")
+            .build();
     }
 }
